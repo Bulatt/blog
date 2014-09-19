@@ -15,9 +15,9 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     if @post.save
+      flash[:success] = "Post created"
       redirect_to @post
     else
-      flash[:error] = "Invalid title or/and body"
       render 'new'
     end
   end
@@ -34,6 +34,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
 
     if @post.update(post_params)
+      flash[:success] = "Post successfully saved"
       redirect_to @post
     else
       render 'edit'

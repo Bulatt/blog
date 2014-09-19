@@ -1,6 +1,8 @@
-<h1> Edit post</h1>
+<% provide(:title, "Edit post") %>
+<h1>Edit post</h1>
 
 <%= form_for :post, url: post_path(@post), method: :patch do |f| %>
+  <%= render 'shared/error_messages' %>
   <p>
     <%= f.label :title %><br>
     <%= f.text_field :title %>
@@ -12,6 +14,6 @@
   </p>
  
   <p>
-    <%= f.submit %>
+    <%= f.submit "Save post", class: "btn" %>
   </p>
 <% end %>

@@ -1,6 +1,8 @@
-<h1> New post</h1>
+<% provide(:title, 'New post') %>
+<h1>New post</h1>
 
 <%= form_for :post, url: posts_path do |f| %>
+  <%= render 'shared/error_messages' %>
   <p>
     <%= f.label :title %><br>
     <%= f.text_field :title %>
@@ -12,6 +14,6 @@
   </p>
  
   <p>
-    <%= f.submit %>
+    <%= f.submit "Save post", class: "btn" %>
   </p>
 <% end %>

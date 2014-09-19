@@ -8,7 +8,7 @@
   <div class="posts">
   <% @posts.each do |post| %> 
   <h2 class="posts-h2"><%= link_to post.title, post_path(post) %></h2> <span class="created-post"><%= l(post.created_at, format: :created_post) %></span>
-  <p><%= truncate(post.body.html_safe, length: 300, separator: ' ') %> 
+  <p><%= truncate(post.body.html_safe, length: 300, separator: ' ', escape: false) %> 
   <%=  link_to "Continue",  post_path(post) %></p>
   <%= link_to "Edit", edit_post_path(post) %>
   <%= link_to "Destroy", post_path(post), method: :delete, data: { confirm: "Are you sure?" } %>

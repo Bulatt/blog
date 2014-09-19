@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :post do
-    title     "Example post for blog"
-    body      "a"*150
+    title     "Example post"
+    body      "a"*140
   end
 end
