@@ -102,4 +102,8 @@ describe "Post Pages" do
       end
   end
 
+  describe "delete posts" do
+   
+  end
+
 end
