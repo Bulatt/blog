@@ -1,37 +1,43 @@
 @import "bootstrap";
 
+/* mixins, variables, etc. */
+
+$font-stack: Verdana, "Bitstream Vera Sans", sans-serif;
+$font-stack-head: "Gill Sans", "Gill Sans Std", "Gill Sans MT", Georgia, serif;
+$bgGrayBlue: #4a525a;
+$linkBlue: #ddd;
+$linkBorder: #888;
+$linkBorderVisited: #999;
+$linkHover: #606870;
+$swamp: #aaa;
+
+@mixin transition($transition-property, $transition-time, $method) {
+  -webkit-transition: $transition-property $transition-time $method;
+  -moz-transition: $transition-property $transition-time $method;
+  -ms-transition: $transition-property $transition-time $method;
+  -o-transition: $transition-property $transition-time $method;
+  transition: $transition-property $transition-time $method;
+}
+
+/* universal */
+
 html {
-  min-height:100%;
+  min-height: 100%;
   position: relative;
 }
 
-body{
-  font-family: Verdana, "Bitstream Vera Sans", sans-serif;
+body {
+  font-family: $font-stack;
   line-height: 1.8em;
-  color: #fff;
+  color: white;
   text-align: left;
-  background-color: #4a525a;
+  background-color: $bgGrayBlue;
   font-size: 11px;
   min-height:100%;
 }
 
-.logo {
-  font-size: 1.9em;
-  letter-spacing: .01em;
-  text-transform: uppercase;
-  text-decoration: none;
-  border: 0 !important; 
-  padding: 14px 8px 14px 8px !important;
-  -webkit-transition: background 500ms ease-in-out;
-  -moz-transition: background 500ms ease-in-out;
-  -ms-transition: background 500ms ease-in-out;
-  -o-transition: background 500ms ease-in-out;
-  transition: background 500ms ease-in-out;
-  font-weight: 690;
-}
-
 h1 {
-  font-family: "Gill Sans", "Gill Sans Std", "Gill Sans MT", Georgia, serif;
+  font-family: $font-stack-head;
   font-size: 1.55em;
   line-height: 1.5em;
   text-align: left;
@@ -40,7 +46,7 @@ h1 {
 }
 
 h2 {
-  font-family: "Gill Sans", "Gill Sans Std", "Gill Sans MT", Verdana, "Bitstream Vera Sans", sans-serif;
+  font-family: $font-stack-head;
   font-size: 1.1em;
   text-align: left;
   font-weight: normal;
@@ -50,12 +56,13 @@ h2 {
   text-transform: uppercase;
 }
 
-#wrap{
+#wrap {
   padding-bottom: 50px;
 }
+
 .content{
   width: 720px;
-  margin: 0 auto 15px auto;
+  margin: 0 auto 30px auto;
   padding: 0;
   text-align: left;
 }
@@ -65,94 +72,54 @@ h2 {
   width: 720px;
 }
 
+.logo {
+  font-size: 1.9em;
+  letter-spacing: .01em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 0 !important; 
+  padding: 14px 8px 14px 8px !important;
+  @include transition(all, 500ms, ease-in-out);
+  font-weight: 690;
+}
+
 .row{
   width: 720px;
 }
 
-.sidebar {
-  color: #eee;
-  text-align: right;
-  font-size: .91em;
-  line-height: 1em;
-}
-.sidebar ul {
-  margin: 0;
-  padding: 40px 30px 5px 0;
-}
-
-.sidebar li {
-  list-style: none;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  margin: 0 0 1em 0;
-  padding: 0;
-}
-
-.button{
-  color: #eee;
+.button {
+  color: $grayLighter;
   border: 0;
   text-decoration: none;
 }
 
 a {
   text-decoration: none;
+  &:link {
+    text-decoration: none;
+    color: $linkBlue;
+    border-color: $linkBorder;
+    border-width: 0 0 1px 0;
+    border-style: none none solid none;
+    padding: 3px 0px 2px 0px;
+    background-color: inherit;
   }
-
-a:link {
-  text-decoration: none;
-  color: #ddd;
-  border-color: #888;
-  border-width: 0 0 1px 0;
-  border-style: none none solid none;
-  padding: 3px 0px 2px 0px;
-  background-color: inherit;
+  &:visited {
+    color: $linkBlue;
+    border-color: $linkBorderVisited;
+    border-width: 0 0 1px 0;
+    border-style: none none dotted none;
+    padding: 3px 0px 2px 0px;
+    background-color: inherit;
   }
-
-a:visited {
-  color: #ddd;
-  border-color: #999;
-  border-width: 0 0 1px 0;
-  border-style: none none dotted none;
-  padding: 3px 0px 2px 0px;
-  background-color: inherit;
+  &:hover {
+    color: white;
+    text-decoration: none;
+    background-color: $linkHover;
+    border-color: $linkHover;
+    @include transition(all, 500ms, ease-in-out);
   }
-
-a:hover {
-  color: white;
-  text-decoration: none;
-  background-color: #606870;
-  border-color: #606870;
-  -webkit-transition: background 500ms ease-in-out;
-  -moz-transition: background 500ms ease-in-out;
-  -ms-transition: background 500ms ease-in-out;
-  -o-transition: background 500ms ease-in-out;
-  transition: background 500ms ease-in-out;
-  }
-
-.sidebar a {
-  color: #eee;
-  padding: 4px 1px 4px 3px;
-  text-decoration: none;
-  -webkit-transition: background 500ms ease-in-out;
-  -moz-transition: background 500ms ease-in-out;
-  -ms-transition: background 500ms ease-in-out;
-  -o-transition: background 500ms ease-in-out;
-  transition: background 500ms ease-in-out;
-  }
-
-.sidebar a:link {
-  color: #eee;
-  border: 0;
-  }
-
-.sidebar a:visited {
-  color: #eee;
-  border: 0;
-  }
-
-.sidebar a:hover {
-  color: #fff;
-  }
+}
 
 .span9 {
   margin-bottom: 70px;
@@ -163,7 +130,45 @@ a:hover {
   width: 515px;
 }
 
+/* sidebar */
+
+.sidebar {
+  color: $grayLighter;
+  text-align: right;
+  font-size: .91em;
+  line-height: 1em;
+  ul {
+    margin: 0;
+    padding: 40px 30px 5px 0;
+    li {
+        list-style: none;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        margin: 0 0 1em 0;
+        padding: 0;
+    }
+  }
+  a {
+    color: $grayLighter;
+    padding: 4px 1px 4px 3px;
+    text-decoration: none;
+    @include transition(all, 500ms, ease-in-out);
+    &:link {
+      color: $grayLighter;
+      border: 0;
+    }
+    &:visited {
+      color: $grayLighter;
+      border: 0;
+    }
+    &:hover {
+      color: white;
+    }
+  }
+}
+
 /* footer */
+
 .footer {
   position:absolute;
   bottom:0;
@@ -174,20 +179,28 @@ a:hover {
 }
 
 .copyright {
-  color: #aaa;
+  color: $swamp;
 }
 
 .copy {
   margin: 0;
 }
 
+/* post */
+
 .posts {
   word-wrap: break-word;
 }
-.input-search {
-  height: 10px !important;
-  font-size: 1em !important;
-  margin-bottom: 0px !important;
+
+.posts-h2 {
+  margin: 2em 0 0em 0;
+}
+
+.created-post {
+  font-size: 0.8em;
+  color: $swamp;
+  display: block;
+  margin-bottom: 5px;
 }
 
 .btn-mini {
@@ -199,20 +212,19 @@ border-radius: 3px;
 margin-left: 15px;
 }
 
-.created-post {
-  font-size: 0.8em;
-  color: #aaa;
-  display: block;
-  margin-bottom: 5px;
-}
+/* search */
 
-.posts-h2 {
-  margin: 2em 0 0em 0;
+.input-search {
+  height: 10px !important;
+  font-size: 1em !important;
+  margin-bottom: 0px !important;
 }
 
 textarea, input {
   width: 500px;
 }
+
+/* error */
 
 #error_explanation {
   color: #f00;

@@ -1,5 +1,7 @@
 class PostsController < ApplicationController
 
+  before_action :find_post, only: [:show, :edit, :update, :destroy]
+
   def index
     if params[:search]
       @posts = Post.search(params[:search]).order("created_at DESC").paginate(page:params[:page], per_page: 10)
@@ -23,16 +25,12 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find(params[:id])
   end
 
   def edit
-    @post = Post.find(params[:id])
   end
 
   def update
-    @post = Post.find(params[:id])
-
     if @post.update(post_params)
       flash[:success] = "Post successfully saved"
       redirect_to @post
@@ -42,13 +40,16 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @post = Post.find(params[:id])
     if @post.destroy
       flash[:success] = "Post deleted"
       redirect_to posts_path
     else
       render 'index'
     end
+  end
+
+  def find_post
+    @post = Post.find(params[:id])
   end
 
 
