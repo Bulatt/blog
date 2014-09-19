@@ -10,6 +10,7 @@ end
 group :test do
   gem 'selenium-webdriver', '2.35.1'
   gem 'capybara', '2.1.0'
+  gem 'factory_girl_rails', '4.2.1'
 end
 
 gem 'sass-rails', '~> 4.0.3'
@@ -20,6 +21,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem "minitest"
 gem 'bootstrap-sass', '2.3.2.0'
+gem 'will_paginate', '3.0.4'
 
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 gem 'spring',        group: :development
