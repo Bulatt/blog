@@ -1,0 +1,5 @@
+- provide(:title, @post.title) 
+.posts
+  %h1= @post.title
+  %p=  @post.body.html_safe
+  = link_to "Back", posts_path

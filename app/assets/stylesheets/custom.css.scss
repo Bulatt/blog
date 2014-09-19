@@ -10,6 +10,7 @@ $linkBorder: #888;
 $linkBorderVisited: #999;
 $linkHover: #606870;
 $swamp: #aaa;
+$redError: #f00;
 
 @mixin transition($transition-property, $transition-time, $method) {
   -webkit-transition: $transition-property $transition-time $method;
@@ -227,7 +228,7 @@ textarea, input {
 /* error */
 
 #error_explanation {
-  color: #f00;
+  color: $redError;
   ul {
     list-style: none;
     margin: 0 0 18px 0;
