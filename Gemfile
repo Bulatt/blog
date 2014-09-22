@@ -23,6 +23,7 @@ gem 'jbuilder', '~> 2.0'
 gem "minitest"
 gem 'bootstrap-sass', '2.3.2.0'
 gem 'will_paginate', '3.0.4'
+gem 'devise'
 
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 gem 'spring',        group: :development

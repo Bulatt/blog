@@ -3,7 +3,8 @@
   = text_field_tag :search, params[:search], class: "input-xlarge input-search",placeholder: "Search Posts"
   = submit_tag "Search", class: "btn btn-mini", :name => nil
 %h1 Latest Posts
-%span= link_to "New post", new_post_path
+- if current_user.try(:admin?)
+  %span= link_to "New post", new_post_path
 .posts
   - @posts.each do |post|
     %h2.posts-h2= link_to post.title, post_path(post)
@@ -11,6 +12,7 @@
     %p
       = truncate(post.body.html_safe, length: 300, separator: ' ', escape: false)
       = link_to "Continue",  post_path(post)
-    = link_to "Edit", edit_post_path(post)
-    = link_to "Delete", post_path(post), method: :delete, data: { confirm: "Are you sure?" }
+    - if current_user.try(:admin?)
+      = link_to "Edit", edit_post_path(post)
+      = link_to "Delete", post_path(post), method: :delete, data: { confirm: "Are you sure?" }
 = will_paginate
