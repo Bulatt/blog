@@ -221,8 +221,8 @@ margin-left: 15px;
   margin-bottom: 0px !important;
 }
 
-.post-form textarea, input {
-  width: 200px
+.post-form {
+  width: 500px
 }
 
 
@@ -244,4 +244,21 @@ margin-left: 15px;
 
 #user_nav {
   float: right;
+}
+
+.alert {
+  width: 170px;
+  padding: 5px;
+}
+
+.alert-notice {
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+  color: #468847;
+}
+
+.alert-alert {
+  background-color: #f2dede;
+  border-color: #eed3d7;
+  color: #b94a48;
 }

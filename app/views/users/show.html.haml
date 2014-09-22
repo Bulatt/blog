@@ -1,0 +1,11 @@
+- if current_user.try(:admin?)
+  %p
+    %strong You is the admin of this site.
+  %span All users: #{User.all.count}
+  - User.all.each do |user|
+    %ul
+      %li= user.email
+      = link_to "Delete user" , user_path(user), method: :delete, data: { confirm: "Are you sure?" }
+  %p All posts: #{Post.all.count}
+- else
+  %p= @user.email

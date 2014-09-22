@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
 
   before_action :checks_is_admin, except: [:index, :show] 
-  before_action :find_post, only:         [:show, :edit, :update, :destroy]
+  before_action :find_post,       only:   [:show, :edit, :update, :destroy]
 
   def index
     if params[:search]
@@ -58,17 +58,6 @@ class PostsController < ApplicationController
 
     def post_params
       params.require(:post).permit(:title, :body)
-    end
-
-    def checks_is_admin
-      authenticate_user!
-
-      if current_user.admin
-        return
-      else
-        flash[:notice] = "Access is denied"
-        redirect_to root_url
-      end
     end
 
 end

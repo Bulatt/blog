@@ -1,10 +1,10 @@
 = form_for @post do |f| 
   = render 'shared/error_messages' 
-  %p.post-form
+  %p
     = f.label :title 
-    = f.text_field :title 
+    = f.text_field :title , class: "post-form"
   %p.post-form
     = f.label :body
-    = f.text_area :body, size: "90x20" 
+    = f.text_area :body, size: "90x20" , class: "post-form"
   %p
     = f.submit "Save post", class: "btn" 
