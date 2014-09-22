@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-      def checks_is_admin
+    def checks_is_admin
       authenticate_user!
 
       if current_user.admin
@@ -20,6 +20,10 @@ class ApplicationController < ActionController::Base
 
     def after_sign_in_path_for(resource)
       user_path(resource)
+    end
+
+    def render_404
+      render :file => 'public/404.html.haml', status: :not_found, layout: 'application'
     end
 
 end

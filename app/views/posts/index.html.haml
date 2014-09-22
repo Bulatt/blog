@@ -3,8 +3,6 @@
   = text_field_tag :search, params[:search], class: "input-xlarge input-search",placeholder: "Search Posts"
   = submit_tag "Search", class: "btn btn-mini", :name => nil
 %h1 Latest Posts
-- if current_user.try(:admin?)
-  %span= link_to "New post", new_post_path
 .posts
   - @posts.each do |post|
     %h2.posts-h2= link_to post.title, post_path(post)

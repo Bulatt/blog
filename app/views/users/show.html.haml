@@ -9,3 +9,4 @@
   %p All posts: #{Post.all.count}
 - else
   %p= @user.email
+= link_to "Create new post", new_post_path
