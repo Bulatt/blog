@@ -8,5 +8,10 @@
       = link_to "Delete user" , user_path(user), method: :delete, data: { confirm: "Are you sure?" }
   %p All posts: #{Post.all.count}
 - else
-  %p= @user.email
+  %p= current_user.email
 = link_to "Create new post", new_post_path
+%p Your posts #{current_user.posts.count}
+- @posts.each do |post|
+  %ul
+    %li= link_to post.title, post_path(post)
+= will_paginate @posts

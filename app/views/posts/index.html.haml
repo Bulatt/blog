@@ -1,7 +1,5 @@
 - provide(:title, 'Blog')
-%form{:action => posts_path, :method => "get"}
-  = text_field_tag :search, params[:search], class: "input-xlarge input-search",placeholder: "Search Posts"
-  = submit_tag "Search", class: "btn btn-mini", :name => nil
+= render 'shared/search'
 %h1 Latest Posts
 .posts
   - @posts.each do |post|
