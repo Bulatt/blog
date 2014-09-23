@@ -5,11 +5,14 @@ class CommentsController < ApplicationController
     @comment = @post.comments.new(comment_params)
     @comment.user = current_user
     if @comment.save
-      flash[:success] = "Post created"
+      respond_to do |format|
+        format.html { redirect_to post_path(@post) }
+        format.js   
+      end
     else
       flash[:error] = "Sign in please"
     end
-    redirect_to post_path(@post)
+     #redirect_to post_path(@post)
   end
 
   def destroy
@@ -17,11 +20,15 @@ class CommentsController < ApplicationController
     @comment = @post.comments.find(params[:id])
     if (@comment.user == current_user) || current_user.admin?
       @comment.destroy
+      respond_to do |format|
+        format.html { redirect_to post_path(@post) }
+        format.js  
+      end
     else
       flash[:error] = "Access denied"
     end
 
-    redirect_to post_path(@post)
+    #redirect_to post_path(@post)
   end
 
   private

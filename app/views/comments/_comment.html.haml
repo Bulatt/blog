@@ -1,0 +1,9 @@
+.comments
+  %p 
+    %strong Commenter: 
+    =comment.user.email
+  %p.comment
+    %strong Body:  
+    =comment.body.html_safe
+  %span.comment-post Posted #{ time_ago_in_words(comment.created_at) } ago. 
+= link_to 'Delete', [comment.post, comment], method: :delete, :remote => true, data: { confirm: 'Are you sure?' } if (comment.user == current_user) || current_user.try(:admin?)

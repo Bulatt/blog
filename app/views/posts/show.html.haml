@@ -5,22 +5,14 @@
   = link_to "Back", posts_path
 %h2
   %strong Comments
-- @post.comments.each do |comment|
-  .comments
-    %p 
-      %strong Commenter: 
-      =comment.user.email
-    %p.comment
-      %strong Body:  
-      =comment.body.html_safe
-    %span.comment-post Posted #{ time_ago_in_words(comment.created_at) } ago. 
-  = link_to 'Delete', [comment.post, comment], method: :delete, data: { confirm: 'Are you sure?' } if (comment.user == current_user) || current_user.try(:admin?)
-- if user_signed_in?
-  %h2 Add a comment:
-  = form_for ([@post, @post.comments.build]) do |f| 
+.comments-wrap
+  #comments-js= render @post.comments
+  - if user_signed_in?
+    %h2 Add a comment:
+    = form_for([@post, @post.comments.build], remote: true) do |f| 
+      %p
+        = f.text_area :body, size: "90x5",class: "post-form-comment"
+      = f.submit "Post comment",  class: "btn"
+  - else
     %p
-      = f.text_area :body, size: "90x5",class: "post-form-comment"
-    = f.submit "Post comment",  class: "btn"
-- else
-  %p
-    %strong #{link_to "Sign up", new_user_registration_path } or #{link_to "sign in", new_user_session_path} to leave a comment.
+      %strong #{link_to "Sign up", new_user_registration_path } or #{link_to "sign in", new_user_session_path} to leave a comment.
