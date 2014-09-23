@@ -11,7 +11,7 @@
     %h2 Add a comment:
     = form_for([@post, @post.comments.build], remote: true) do |f| 
       %p
-        = f.text_area :body, size: "90x5",class: "post-form-comment"
+        = f.text_area :body, size: "90x5",class: "post-form-comment", id: "com"
       = f.submit "Post comment",  class: "btn"
   - else
     %p
