@@ -1,3 +1,6 @@
+%p
+  %strong Name: #{current_user.name}
+  = link_to "Edit profile", edit_user_registration_path(@user)
 - if current_user.try(:admin?)
   %p
     %strong You is the admin of this site.
@@ -9,8 +12,6 @@
   %p All posts: #{Post.all.count}
   = link_to "Create new post", new_post_path
 - else
-  %p= current_user.email
-%p 
 %p Your posts #{current_user.posts.count}
 - @posts.each do |post|
   %ul
