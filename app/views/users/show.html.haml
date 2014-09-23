@@ -15,4 +15,8 @@
 - @posts.each do |post|
   %ul
     %li= link_to post.title, post_path(post)
+%p Your comments #{current_user.comments.count}
+- current_user.comments.each do |comment|
+  %ul
+    %li Post: #{comment.post.title} , comment: #{link_to comment.body, post_path(comment.post)}
 = will_paginate @posts

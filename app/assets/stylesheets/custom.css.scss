@@ -262,3 +262,18 @@ margin-left: 15px;
   border-color: #eed3d7;
   color: #b94a48;
 }
+
+/* comments */
+
+.post-form-comment {
+  width: 350px
+}
+
+.comments {
+  word-wrap: break-word;
+  padding-bottom: 15px;
+}
+
+.comment-post {
+  color: $swamp;
+}

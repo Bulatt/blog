@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   match '/contact',  to: 'static_pages#contact',  via: 'get'
   match '/projects', to: 'static_pages#projects',   via: 'get'
   resources :users, only: [:show, :destroy]
-  resources :posts
+  resources :posts do 
+    resources :comments
+  end
 
 
   # The priority is based upon order of creation: first created -> highest priority.
